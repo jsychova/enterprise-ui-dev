@@ -12,10 +12,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        name: Checkout Repository
-      - name: Setup Node
+        name: Checkout Repository 👀
+      - name: Setup Node 🤫
         uses: actions/setup-node@v3
       - uses: actions/cache@v3
+        name: Cache node modules 🫠 
         id: npm-cache
         with:
           path: ~/.npm
