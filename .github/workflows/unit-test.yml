@@ -16,13 +16,28 @@ jobs:
       - name: Setup Node 🤫
         uses: actions/setup-node@v3
       - uses: actions/cache@v3
-        name: Cache node modules 🫠 
+        name: Cache node modules 🫠
         id: npm-cache
         with:
           path: ~/.npm
           key: npm-${{ hashFiles('**/package-lock.json') }}
       - run: npm ci
       - run: npm test
+
+  check-formatting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout respository
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+      - run: npm ci
+        name: Install modules from npm
+      - name: Check formatting with Prettier
+        run: npm run format:check
 
   build:
     runs-on: ubuntu-latest
