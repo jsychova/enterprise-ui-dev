@@ -33,3 +33,19 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build
+
+  coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        name: Checkout Repository 👀
+      - name: Setup Node 🤫
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+      - run: npm ci
+      - run: npm test -- --coverage
+      - uses: actions/upload-artifacts@v3
+        name: Active coverage report uses artifacts 🤖
