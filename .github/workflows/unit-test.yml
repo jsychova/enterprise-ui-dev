@@ -49,3 +49,6 @@ jobs:
       - run: npm test -- --coverage
       - uses: actions/upload-artifact@v3
         name: Active coverage report uses artifacts 🤖
+        with:
+          name: coverage-report
+          path: coverage
